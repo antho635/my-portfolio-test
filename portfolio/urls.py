@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-import portfolio_back
 from portfolio_back import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
